@@ -22,7 +22,7 @@ public class Expense {
     private String categoryid; // FK
     private String description;
     private boolean receipt;
-    private BigDecimal amount;
+    private BigDecimal amount;  
     private String dateincurred;
     // needed in 2nd case study
     @Basic(optional = true)
