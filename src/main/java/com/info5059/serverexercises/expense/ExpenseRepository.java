@@ -1,5 +1,7 @@
 package com.info5059.serverexercises.expense;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,5 +17,7 @@ public interface ExpenseRepository extends CrudRepository<Expense, Long> {
     @Transactional
     @Query("delete from Expense where id = ?1")
     int deleteOne(Long expenseid);
+
+    List<Expense> findByEmployeeid(Long employeeid);
 
 }
