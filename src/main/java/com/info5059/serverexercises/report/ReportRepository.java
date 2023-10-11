@@ -1,5 +1,7 @@
 package com.info5059.serverexercises.report;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,4 +18,5 @@ public interface ReportRepository extends CrudRepository<Report, Long> {
     @Query("delete from Report where id = ?1")
     int deleteOne(Long reportid);
 
+    List<Report> findByEmployeeid(long employeeid);
 }

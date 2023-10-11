@@ -58,4 +58,3 @@ INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amou
  VALUES (6,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
  VALUES (6,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
-
