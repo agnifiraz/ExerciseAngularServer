@@ -37,8 +37,12 @@ public class ReportPDFController {
         // get formatted pdf as a stream
         String repid = request.getParameter("repid");
         try {
-            ByteArrayInputStream bis = ReportPDFGenerator.generateReport(repid, reportRepository, employeeRepository,
+            ByteArrayInputStream bis = ReportPDFGenerator.generateReport(
+                    repid,
+                    reportRepository,
+                    employeeRepository,
                     expenseRepository);
+
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Disposition", "inline; filename=examplereport.pdf");
             return ResponseEntity

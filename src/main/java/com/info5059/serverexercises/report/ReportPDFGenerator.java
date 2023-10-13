@@ -41,14 +41,19 @@ import java.util.logging.Logger;
  * ReportPDFGenerator - a class for creating dynamic expense report output in
  * PDF format using the iText 7 library
  *
- * @author Evan
+ * @author Agnita
  */
 public abstract class ReportPDFGenerator extends AbstractPdfView {
-    public static ByteArrayInputStream generateReport(String repid, ReportRepository reportRepository,
-            EmployeeRepository employeeRepository, ExpenseRepository expenseRepository) throws IOException {
+    public static ByteArrayInputStream generateReport(
+            String repid,
+            ReportRepository reportRepository,
+            EmployeeRepository employeeRepository,
+            ExpenseRepository expenseRepository) throws IOException {
+
         Report report = new Report();
         URL imageUrl = Generator.class.getResource("/static/images/Expenses.png");
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
         PdfWriter writer = new PdfWriter(baos);
         // Initialize PDF document to be written to a stream not a file
         PdfDocument pdf = new PdfDocument(writer);
@@ -65,15 +70,15 @@ public abstract class ReportPDFGenerator extends AbstractPdfView {
         document.add(new Paragraph("\n\n"));
         Locale locale = Locale.of("en", "US");
         NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+
         try {
             // Get the report data
             Optional<Report> opt = reportRepository.findById(Long.parseLong(repid));
             if (opt.isPresent()) {
                 report = opt.get();
             }
+
             document.add(new Paragraph("\n\n"));
-            // Optional<Report> reportOption =
-            // reportRepository.findById(Long.parseLong(repid));
             document.add(new Paragraph("Report# " + repid)
                     .setFont(font)
                     .setFontSize(18)
@@ -82,11 +87,9 @@ public abstract class ReportPDFGenerator extends AbstractPdfView {
                     .setTextAlignment(TextAlignment.RIGHT));
 
             document.add(new Paragraph("\n\n"));
-            // add the employee info for the order here
             Table employeeTable = new Table(2).setWidth(new UnitValue(UnitValue.PERCENT, 30))
                     .setHorizontalAlignment(HorizontalAlignment.LEFT);
 
-            // Dump out the employee information
             Optional<Employee> employeeOpt = employeeRepository.findById(report.getEmployeeid());
             if (employeeOpt.isPresent()) {
                 Employee employee = employeeOpt.get();
@@ -95,36 +98,32 @@ public abstract class ReportPDFGenerator extends AbstractPdfView {
                 employeeTable.addCell(cell);
                 cell = new Cell().add(new Paragraph(employee.getFirstname())
                         .setBold()
-                        .setBorder(Border.NO_BORDER));
+                        .setBorder(Border.NO_BORDER)
+                        .setBackgroundColor(ColorConstants.LIGHT_GRAY));
                 employeeTable.addCell(cell);
-
-                cell.setBackgroundColor(ColorConstants.LIGHT_GRAY);
             }
+
             // Expense details table
             Table expenseTable = new Table(4);
             expenseTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
             BigDecimal total = new BigDecimal(0.0);
 
-            // Add a table header row
             Cell headerCell = new Cell().add(new Paragraph("ID")
                     .setBold()
                     .setBackgroundColor(ColorConstants.LIGHT_GRAY)
                     .setTextAlignment(TextAlignment.CENTER));
-
             expenseTable.addCell(headerCell);
 
             headerCell = new Cell().add(new Paragraph("Date Incurred")
                     .setBold()
                     .setBackgroundColor(ColorConstants.LIGHT_GRAY)
                     .setTextAlignment(TextAlignment.CENTER));
-            headerCell.setTextAlignment(TextAlignment.CENTER);
             expenseTable.addCell(headerCell);
 
             headerCell = new Cell().add(new Paragraph("Description")
                     .setBold()
                     .setBackgroundColor(ColorConstants.LIGHT_GRAY)
                     .setTextAlignment(TextAlignment.CENTER));
-            headerCell.setTextAlignment(TextAlignment.CENTER);
             expenseTable.addCell(headerCell);
 
             headerCell = new Cell().add(new Paragraph("Amount")
@@ -133,7 +132,6 @@ public abstract class ReportPDFGenerator extends AbstractPdfView {
                     .setTextAlignment(TextAlignment.CENTER));
             expenseTable.addCell(headerCell);
 
-            // Dump out the line items
             for (ReportItem line : report.getItems()) {
                 Optional<Expense> optx = expenseRepository.findById(line.getExpenseid());
                 if (optx.isPresent()) {
@@ -163,16 +161,17 @@ public abstract class ReportPDFGenerator extends AbstractPdfView {
                     total = total.add(expense.getAmount(), new MathContext(8, RoundingMode.UP));
                 }
             }
+
             Cell cell = new Cell(1, 3).add(new Paragraph("Report Total:")
                     .setBorder(Border.NO_BORDER)
                     .setTextAlignment(TextAlignment.RIGHT)
                     .setBorder(Border.NO_BORDER));
             expenseTable.addCell(cell);
+
             cell = new Cell().add(new Paragraph(formatter.format(total))
                     .setTextAlignment(TextAlignment.RIGHT)
                     .setBackgroundColor(ColorConstants.YELLOW));
             expenseTable.addCell(cell);
-            cell.setTextAlignment(TextAlignment.RIGHT);
 
             // Add the tables to the document
             document.add(employeeTable);
