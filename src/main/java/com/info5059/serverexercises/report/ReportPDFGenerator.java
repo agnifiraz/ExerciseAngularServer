@@ -93,12 +93,27 @@ public abstract class ReportPDFGenerator extends AbstractPdfView {
             Optional<Employee> employeeOpt = employeeRepository.findById(report.getEmployeeid());
             if (employeeOpt.isPresent()) {
                 Employee employee = employeeOpt.get();
-                Cell cell = new Cell().add(new Paragraph("Employee: ")
+                Cell cell = new Cell().add(new Paragraph("Employee:")
                         .setBold());
                 employeeTable.addCell(cell);
-                cell = new Cell().add(new Paragraph(employee.getFirstname())
+                cell = new Cell(1, 2).add(new Paragraph(employee.getFirstname())
                         .setBold()
                         .setBorder(Border.NO_BORDER)
+                        .setTextAlignment(TextAlignment.RIGHT)
+                        .setBackgroundColor(ColorConstants.LIGHT_GRAY));
+                employeeTable.addCell(cell);
+
+                cell = new Cell(1, 2).add(new Paragraph(employee.getLastname())
+                        .setBold()
+                        .setBorder(Border.NO_BORDER)
+                        .setTextAlignment(TextAlignment.RIGHT)
+                        .setBackgroundColor(ColorConstants.LIGHT_GRAY));
+                employeeTable.addCell(cell);
+
+                cell = new Cell(1, 2).add(new Paragraph(employee.getEmail())
+                        .setBold()
+                        .setBorder(Border.NO_BORDER)
+                        .setTextAlignment(TextAlignment.RIGHT)
                         .setBackgroundColor(ColorConstants.LIGHT_GRAY));
                 employeeTable.addCell(cell);
             }
