@@ -31,6 +31,7 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.net.URL;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Optional;
@@ -193,6 +194,10 @@ public abstract class ReportPDFGenerator extends AbstractPdfView {
             document.add(new Paragraph("\n\n"));
             document.add(expenseTable);
 
+            document.add(new Paragraph("\n\n"));
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a");
+            document.add(new Paragraph(dateFormatter.format(LocalDateTime.now()))
+                    .setTextAlignment(TextAlignment.CENTER));
             document.close();
 
         } catch (Exception ex) {
