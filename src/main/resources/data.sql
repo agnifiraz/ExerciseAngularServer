@@ -11,6 +11,9 @@ INSERT INTO Employee (Title,FirstName,LastName,PhoneNo,Email)
  VALUES ('Mr.','Sloppy','Joe','(555)555-5553','sj@abc.com');
 INSERT INTO Employee (Title,FirstName,LastName,PhoneNo,Email)
  VALUES ('Ms.','Agnita','Paul','(555)555-5554','ap@abc.com');
+
+
+ 
 -- add expense categories
 INSERT INTO Expense_Category (Id, Description) VALUES ('BSM','Business Meetings');
 INSERT INTO Expense_Category (Id, Description) VALUES ('ENT','Entertainment');
@@ -21,31 +24,62 @@ INSERT INTO Expense_Category (Id, Description) VALUES ('MEAL','Meals');
 INSERT INTO Expense_Category (Id, Description) VALUES ('TUI','Tuition');
 INSERT INTO Expense_Category (Id, Description) VALUES ('MISC','Miscealleous');
 INSERT INTO Expense_Category (Id, Description) VALUES ('OTH','OTHER');
+
+
+
 -- add some expenses to seed the table
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (1,'PARK','Parking for Convention Changed',true,'2023-04-13',19.99);
+VALUES (1,'PARK','Parking for Convention',true,'2023-04-13',19.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (1,'LDG','Hotel for Convention Changed',true,'2023-04-15',219.99);
+VALUES (1,'LDG','Hotel for Convention',true,'2023-04-15',219.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (1,'MEAL','Food at Convention',true,'2023-04-13',39.99);
+VALUES (1,'MEAL','Food at Convention',true,'2023-04-13',39.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (2,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
+VALUES (2,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (2,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
+VALUES (2,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (2,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
- INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (3,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
+VALUES (2,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (3,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
+VALUES (3,'PARK','Parking for Convention',true,'2023-04-13',19.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (3,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
- INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (4,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
+VALUES (3,'LDG','Hotel for Convention',true,'2023-04-15',219.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (4,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
+VALUES (3,'MEAL','Food at Convention',true,'2023-04-13',39.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
- VALUES (4,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
+VALUES (4,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (4,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (4,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (1,'PARK','Parking for Convention',true,'2023-04-13',19.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (1,'LDG','Hotel for Convention',true,'2023-04-15',219.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (1,'MEAL','Food at Convention',true,'2023-04-13',39.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (2,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (2,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (2,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (3,'PARK','Parking for Convention',true,'2023-04-13',19.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (3,'LDG','Hotel for Convention',true,'2023-04-15',219.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (3,'MEAL','Food at Convention',true,'2023-04-13',39.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (4,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (4,'MISC','Bought widgets for the office',true,'2023-05-20',19.99);
+INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
+VALUES (4,'OTH','Donation for Cancer Society',true,'2023-05-21',20.00);
+
+
+
+ --newly added for me
  INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)
  VALUES (5,'TUI','Tuition for Cobol course',true,'2023-05-19',29.99);
 INSERT INTO Expense (EmployeeId,CategoryId,Description,Receipt,DateIncurred,Amount)

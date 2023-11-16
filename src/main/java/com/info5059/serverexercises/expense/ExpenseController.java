@@ -1,6 +1,8 @@
 package com.info5059.serverexercises.expense;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +40,12 @@ public class ExpenseController {
     public ResponseEntity<Iterable<Expense>> findByEmployee(@PathVariable Long employeeid) {
         Iterable<Expense> expenses = expenseRepository.findByEmployeeid(employeeid);
         return new ResponseEntity<Iterable<Expense>>(expenses, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/api/expenses/paged", params = { "p", "s" })
+    public Page<Expense> findPaginated(@RequestParam("p") int page, @RequestParam("s") int size) {
+        Page<Expense> resultPage = expenseRepository.findAll(PageRequest.of(page, size));
+        return resultPage;
     }
 
 }

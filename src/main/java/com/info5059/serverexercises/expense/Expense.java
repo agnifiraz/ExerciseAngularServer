@@ -1,4 +1,5 @@
 package com.info5059.serverexercises.expense;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import java.math.BigDecimal;
@@ -8,9 +9,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Lob;
+
 /**
-* Expense entity
-*/
+ * Expense entity
+ */
 @Entity
 @Data
 @RequiredArgsConstructor
@@ -22,7 +24,7 @@ public class Expense {
     private String categoryid; // FK
     private String description;
     private boolean receipt;
-    private BigDecimal amount;  
+    private BigDecimal amount;
     private String dateincurred;
     // needed in 2nd case study
     @Basic(optional = true)
